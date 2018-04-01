@@ -1,6 +1,7 @@
 package com.stickynotes.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "notes")
@@ -10,42 +11,81 @@ public class NotesEntity {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "note_content")
-    private String noteContent;
+    @Column(name = "data")
+    private String data;
 
-    @Column(name = "email")
-    private String email;
+
+    @Column(name = "type")
+    private String type;
+
+    @JoinColumn(name = "user_id")
+    @ManyToOne( cascade = CascadeType.ALL)
+    private UserEntity user;
+
+    @Column(name = "created")
+    private Date created;
+
+    @Column(name = "updated")
+    private  Date updated;
+
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNoteContent() {
-        return noteContent;
-    }
-
-    public void setNoteContent(String noteContent) {
-        this.noteContent = noteContent;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     @Override
     public String toString() {
         return "NotesEntity{" +
                 "id=" + id +
-                ", noteContent='" + noteContent + '\'' +
-                ", email='" + email + '\'' +
+                ", data='" + data + '\'' +
+                ", type='" + type + '\'' +
+                ", user=" + user +
+                ", created=" + created +
+                ", updated=" + updated +
                 '}';
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public Date getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(Date updated) {
+        this.updated = updated;
     }
 }
