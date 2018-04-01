@@ -14,7 +14,6 @@ public class NotesEntity {
     @Column(name = "data")
     private String data;
 
-
     @Column(name = "type")
     private String type;
 
@@ -28,21 +27,20 @@ public class NotesEntity {
     @Column(name = "updated")
     private  Date updated;
 
+    @Column(name = "is_delete")
+    private  Boolean deleted;
+
+
+    public Boolean getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
+    }
 
     public Long getId() {
         return id;
-    }
-
-    @Override
-    public String toString() {
-        return "NotesEntity{" +
-                "id=" + id +
-                ", data='" + data + '\'' +
-                ", type='" + type + '\'' +
-                ", user=" + user +
-                ", created=" + created +
-                ", updated=" + updated +
-                '}';
     }
 
     public void setId(Long id) {
@@ -87,5 +85,18 @@ public class NotesEntity {
 
     public void setUpdated(Date updated) {
         this.updated = updated;
+    }
+
+    @Override
+    public String toString() {
+        return "NotesEntity{" +
+                "id=" + id +
+                ", data='" + data + '\'' +
+                ", type='" + type + '\'' +
+                ", user=" + user +
+                ", created=" + created +
+                ", updated=" + updated +
+                ", deleted=" + deleted +
+                '}';
     }
 }

@@ -24,6 +24,17 @@ public class UserEntity {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<NotesEntity> notes;
 
+    @Column(name = "is_active")
+    private Boolean active;
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
     public Long getId() {
         return id;
     }
@@ -72,6 +83,8 @@ public class UserEntity {
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
                 ", notes=" + notes +
+                ", active=" + active +
                 '}';
     }
+
 }
