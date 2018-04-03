@@ -1,19 +1,22 @@
-package com.stickynotes.sticky;
+package com.stickynotes.controller;
 
-import com.stickynotes.dao.Notes;
+import com.stickynotes.dao.NotesRepository;
+import com.stickynotes.dao.UserRepository;
 import com.stickynotes.entity.NotesEntity;
+import com.stickynotes.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import request.NotesRequest;
 import request.TestRequest;
+import request.UserRequest;
 
-@RequestMapping("/api")
+@RequestMapping("/user")
 @RestController
-public class TestController {
+public class UserController {
 
     @Autowired
-    private Notes notesRepo;
+    private UserService userService;
 
     @RequestMapping(method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     public String index() {
@@ -25,12 +28,8 @@ public class TestController {
         return new String(testRequest.toString());
     }
 
-    @RequestMapping(path = "/addNote", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-    public  String addNote(@RequestBody NotesRequest noteRequest) {
-        NotesEntity entity = new NotesEntity();
-        entity.setEmail(noteRequest.getEmail());
-        entity.setNoteContent(noteRequest.getNotes());
-        notesRepo.save(entity);
-        return new String("succeded");
+    @RequestMapping(path = "/createUser", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    public  String addNote(@RequestBody UserRequest request) {
+        return userService.createUser(request.getName(), request.getEmailId(), request.getPassword(), request.getActive());
     }
 }
