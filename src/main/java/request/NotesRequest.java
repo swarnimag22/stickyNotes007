@@ -1,30 +1,54 @@
 package request;
 
 public class NotesRequest {
-    private String email;
-    private String notes;
 
-    public String getEmail() {
-        return email;
+    private String data;
+
+    private String type;
+
+    private Long userId;
+
+    private Boolean deleted;
+
+    public String getData() {
+        return data;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setData(String data) {
+        this.data = data;
     }
 
-    public String getNotes() {
-        return notes;
+    public String getType() {
+        return type;
     }
 
-    public void setNotes(String notes) {
-        this.notes = notes;
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Boolean getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
     }
 
     @Override
     public String toString() {
         return "NotesRequest{" +
-                "email='" + email + '\'' +
-                ", notes='" + notes + '\'' +
+                "data='" + data + '\'' +
+                ", type='" + type + '\'' +
+                ", userId=" + userId +
+                ", deleted=" + deleted +
                 '}';
     }
 }

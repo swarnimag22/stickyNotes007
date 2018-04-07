@@ -1,4 +1,6 @@
 package com.stickynotes.service;
 
-public class UserService {
+public interface UserService {
+
+    String createUser( String name, String emailId, String password, Boolean isActive);
 }
